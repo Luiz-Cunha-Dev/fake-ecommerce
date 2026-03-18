@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TechMart - Demo e-commerce store with premium tech products." />
+  <title>TechMart — Premium Tech Products</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ─── Header ──────────────────────────────────────────────────────────── -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html" class="logo-link" id="logo">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">Tech<span>Mart</span></span>
+        </a>
+      </div>
+      <nav class="header-nav" id="header-nav">
+        <a href="index.html" class="nav-link active">Products</a>
+      </nav>
+      <div class="header-actions">
+        <span class="store-badge">Demo Store</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content" id="main-content">
+
+    <!-- ─── Hero ────────────────────────────────────────────────────────── -->
+    <section class="hero-banner" id="hero-banner">
+      <h1 class="hero-title">Premium Tech Products</h1>
+      <p class="hero-subtitle">Explore our curated collection — prices in USD</p>
+    </section>
+
+    <!-- ─── Filters ─────────────────────────────────────────────────────── -->
+    <section class="filters-section" id="filters-section">
+      <div class="filters-container">
+        <div class="search-box">
+          <input
+            type="text"
+            id="search-input"
+            class="search-input"
+            placeholder="Search products by name or category..."
+            aria-label="Search products"
+          />
+        </div>
+        <div class="filter-group">
+          <select id="category-filter" class="filter-select" aria-label="Filter by category">
+            <option value="">All Categories</option>
+            <option value="Audio">Audio</option>
+            <option value="Peripherals">Peripherals</option>
+            <option value="Monitors">Monitors</option>
+            <option value="Storage">Storage</option>
+            <option value="Accessories">Accessories</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <select id="sort-select" class="filter-select" aria-label="Sort products">
+            <option value="default">Sort: Default</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="rating">Highest Rated</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Product Grid ─────────────────────────────────────────────────── -->
+    <section class="products-section" id="products-section">
+      <div class="products-meta">
+        <p class="products-count-text">
+          Showing <strong id="products-count">0</strong> products
+        </p>
+        <button class="btn btn-ghost btn-sm" id="reset-store-btn" title="Reset all products to default data">
+          ↺ Reset Store Data
+        </button>
+      </div>
+
+      <!-- Product cards injected here by listing.js -->
+      <div class="products-grid" id="products-grid" role="list" aria-label="Product listing">
+        <p style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--gray-500)">Loading products…</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─── Footer ──────────────────────────────────────────────────────────── -->
+  <footer class="site-footer" id="site-footer">
+    <div class="footer-content">
+      <p class="footer-text">TechMart &copy; 2024 — Fake E-commerce Store</p>
+      <p class="footer-disclaimer">
+        This is a demonstration store for scraping and development purposes only. No real transactions occur.
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/store.js"></script>
+  <script src="js/listing.js"></script>
+</body>
+</html>

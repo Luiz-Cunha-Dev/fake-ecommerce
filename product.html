@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TechMart product detail page." />
+  <title>Product — TechMart</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ─── Header ──────────────────────────────────────────────────────────── -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html" class="logo-link" id="logo">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">Tech<span>Mart</span></span>
+        </a>
+      </div>
+      <nav class="header-nav" id="header-nav">
+        <a href="index.html" class="nav-link">← Back to Products</a>
+      </nav>
+      <div class="header-actions">
+        <span class="store-badge">Demo Store</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content" id="main-content">
+
+    <!-- ─── Product Detail ───────────────────────────────────────────────── -->
+    <!--
+      [Scraping targets on this page]
+      .product-detail          → product container     (data-product-id)
+      .product-image-main      → product image URL
+      .product-title           → product name
+      .category-name           → category
+      .price-currency          → "$"
+      .price-value             → numeric price
+      .product-description     → full description
+      .product-rating          → rating container
+        .rating-value          → numeric rating (e.g. "4.8")
+        .rating-count          → "(N reviews)"
+      .review-item             → each review      (data-review-id)
+        .review-author         → reviewer name
+        .review-rating         → star string
+        .review-stars-value    → "N/5"
+        .review-date           → ISO date
+        .review-text           → review body
+    -->
+    <div class="product-detail-page">
+      <div class="product-detail" id="product-detail" data-product-id="">
+        <!-- Injected by product.js -->
+        <p style="grid-column:1/-1;text-align:center;padding:4rem;color:var(--gray-500)">Loading product…</p>
+      </div>
+    </div>
+
+    <!-- ─── Reviews ──────────────────────────────────────────────────────── -->
+    <div id="reviews-section" class="reviews-section">
+      <!-- Injected by product.js -->
+    </div>
+
+  </main>
+
+  <!-- ─── Footer ──────────────────────────────────────────────────────────── -->
+  <footer class="site-footer" id="site-footer">
+    <div class="footer-content">
+      <p class="footer-text">TechMart &copy; 2024 — Fake E-commerce Store</p>
+      <p class="footer-disclaimer">
+        This is a demonstration store for scraping and development purposes only. No real transactions occur.
+      </p>
+      <div class="footer-actions">
+        <a href="index.html" class="btn btn-ghost btn-sm" style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.2)">
+          ← All Products
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/store.js"></script>
+  <script src="js/product.js"></script>
+</body>
+</html>
