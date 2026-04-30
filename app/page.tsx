@@ -5,17 +5,24 @@ import Product from '@/lib/models/Product'
 import ProductGrid from '@/components/ProductGrid'
 import { Product as IProduct } from '@/lib/types'
 
-async function getProducts(): Promise<IProduct[]> {
-  await connectDB()
-  const products = await Product.find({}).lean()
-  return products.map((p) => ({
-    ...p,
-    _id: (p._id as { toString(): string }).toString(),
-  })) as IProduct[]
+async function getProducts(): Promise<{ products: IProduct[]; error?: string }> {
+  try {
+    await connectDB()
+    const products = await Product.find({}).lean()
+    return {
+      products: products.map((p) => ({
+        ...p,
+        _id: (p._id as { toString(): string }).toString(),
+      })) as IProduct[],
+    }
+  } catch (err) {
+    console.error('[getProducts]', err)
+    return { products: [], error: 'Failed to connect to the database.' }
+  }
 }
 
 export default async function HomePage() {
-  const products = await getProducts()
+  const { products, error } = await getProducts()
 
   return (
     <>
@@ -28,15 +35,24 @@ export default async function HomePage() {
         </p>
       </div>
 
-      {products.length === 0 ? (
+      {error ? (
+        <section className="products-section">
+          <div className="products-grid">
+            <div className="error-state">
+              <div className="error-icon">⚠️</div>
+              <h2>Database unavailable</h2>
+              <p>{error}</p>
+            </div>
+          </div>
+        </section>
+      ) : products.length === 0 ? (
         <section className="products-section">
           <div className="products-grid">
             <div className="empty-state">
               <div className="empty-icon">📦</div>
               <h2 className="empty-title">No products yet</h2>
               <p className="empty-text">
-                Seed the database by sending a POST request to{' '}
-                <code>/api/seed</code>.
+                Seed the database by sending a POST request to <code>/api/seed</code>.
               </p>
             </div>
           </div>
